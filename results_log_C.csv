@@ -1,0 +1,4 @@
+Member,Model,Features,Target,Hyperparameters,Train_RMSE,Val_RMSE,Val_MAE,Sep,Oct,Nov,Notes
+C,"Laplace linear (IRLS), median forecast",own+prevday+nbr+network+trend+long,log1p(PM2.5),l2=1e-3,28.05,29.27,16.02,20.22,17.49,43.28,no clim/calendar; see ablation
+C,"Laplace linear (IRLS), smeared-mean forecast",own+prevday+nbr+network+trend+long,log1p(PM2.5),"l2=1e-3, smearing=1.119",28.01,28.16,15.74,20.05,17.57,41.05,no clim/calendar; see ablation
+C,"Heteroscedastic Gaussian linear, log-normal mean",own+prevday+nbr+network+trend+long,log1p(PM2.5),l2=1e-3,27.68,28.69,16.05,20.0,17.38,42.24,no clim/calendar; see ablation
