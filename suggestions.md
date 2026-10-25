@@ -4,9 +4,10 @@ Everyone runs their own experiments. These rules keep results comparable
 and let the winning model drop into one notebook that runs top to bottom.
 
 ## Shared (required)
-- Load data, split and score only through `core.py`:
-  `load()`, `make_rows()`, `evaluate()`, `persistence()`, `part1_ridge()`.
-- Split by target date: train = targets 1 Jan–31 Aug, val = targets 1 Sep–30 Nov.
+- Load data, split and score only through `baseline.py`:
+  `load_data()`, `issue_times()`, `targets()`, `evaluate()`, `persistence()`,
+  `part1_ridge_predict()`. Run `B.self_check()` first; it must print `baseline.py OK`.
+- Split by target date: train = targets 3 Jan–31 Aug, val = targets 1 Sep–30 Nov.
   Noon rows: 113,256 train and 42,588 val.
 - Scores are in µg/m³ with predictions clipped at 0. Convert log or change
   targets back before scoring.
@@ -50,5 +51,5 @@ Target options: level, log1p, or change from persistence (y(t+24h) − y(t)).
    `assert f(history, t).equals(f(history.loc[:t], t))`
 4. Parity: features for one issue time equal that issue time's rows in
    the batch computation, so forecast.py matches training.
-5. Baselines: `core.persistence()` and `core.part1_ridge()` reproduce the
-   reference numbers.
+5. Baselines: `B.self_check()` reproduces the reference numbers
+   (persistence 32.75 / 17.47, Part 1 ridge 29.58 / 18.16).
