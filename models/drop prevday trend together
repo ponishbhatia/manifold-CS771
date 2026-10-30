@@ -1,0 +1,4 @@
+# Drop prevday and trend together (the two groups that add nothing one at a time)
+pruned = fit_and_score(["own", "nbr", "network", "long"])
+print(f"final (6 groups): RMSE {full_scores['RMSE']:.3f} MAE {full_scores['MAE']:.3f}")
+print(f"- prevday - trend ({pruned['n_features']} features): RMSE {pruned['RMSE']:.3f} MAE {pruned['MAE']:.3f}")
